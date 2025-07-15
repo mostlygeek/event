@@ -38,10 +38,18 @@ type Dispatcher struct {
 
 // NewDispatcher creates a new dispatcher of events.
 func NewDispatcher() *Dispatcher {
+	return NewDispatcherConfig(
+		500*time.Microsecond,
+		50000,
+	)
+}
+
+// NewDispatcherConfig creates a new dispatcher with configurable flush interval and max queue size
+func NewDispatcherConfig(flushInterval time.Duration, maxQueue int) *Dispatcher {
 	d := &Dispatcher{
-		df:       500 * time.Microsecond,
+		df:       flushInterval,
 		done:     make(chan struct{}),
-		maxQueue: 50000, // 50k * 20 (df) = 1 million events / second
+		maxQueue: maxQueue,
 	}
 
 	d.subs.Store(&registry{
