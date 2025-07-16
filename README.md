@@ -1,26 +1,54 @@
+## About this Fork:
+
+This fork is slower than the parent but has 0% CPU usage while idle. Benchmark results are below show difference in operations/second. They were run on an M1 Macbook Pro w/ 32GB of RAM. For the main use case of this library [llama-swap](https://github.com/mostlygeek/llama-swap) the trade-off is worth it.
+
+### kelindar/event
+
+| name   | time/op | ops/s | allocs/op | vs prev | vs ref    |
+| ------ | ------- | ----- | --------- | ------- | --------- |
+| 1x1    | 70.1 ns | 14.3M | 0         | new     | ✅ +76%   |
+| 1x10   | 60.2 ns | 16.6M | 0         | new     | ✅ +2.3x  |
+| 1x100  | 36.5 ns | 27.4M | 0         | new     | ✅ +6.3x  |
+| 10x1   | 80.3 ns | 12.4M | 0         | new     | ✅ +86%   |
+| 10x10  | 35.7 ns | 28.0M | 0         | new     | ✅ +7.3x  |
+| 10x100 | 24.7 ns | 40.5M | 0         | new     | ✅ +10.2x |
+
+### mostlygeek/event
+
+| name   | time/op  | ops/s | allocs/op | vs prev   | vs ref    |
+| ------ | -------- | ----- | --------- | --------- | --------- |
+| 1x1    | 79.5 ns  | 12.6M | 0         | ❌ -13%   | ✅ +53%   |
+| 1x10   | 66.2 ns  | 15.1M | 0         | 🟰 similar | ✅ +2.1x  |
+| 1x100  | 63.5 ns  | 15.7M | 0         | ❌ -50%   | ✅ +3.4x  |
+| 10x1   | 168.7 ns | 5.9M  | 0         | ❌ -54%   | ❌ -18%   |
+| 10x10  | 166.8 ns | 6.0M  | 0         | ❌ -71%   | 🟰 similar |
+| 10x100 | 55.6 ns  | 18.0M | 0         | ❌ -65%   | ✅ +3.6x  |
+
+---
+
 <p align="center">
 <img width="300" height="100" src=".github/logo.png" border="0" alt="kelindar/event">
 <br>
 <img src="https://img.shields.io/github/go-mod/go-version/kelindar/event" alt="Go Version">
-<a href="https://pkg.go.dev/github.com/kelindar/event"><img src="https://pkg.go.dev/badge/github.com/kelindar/event" alt="PkgGoDev"></a>
 <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License"></a>
-<a href="https://coveralls.io/github/kelindar/event"><img src="https://coveralls.io/repos/github/kelindar/event/badge.svg" alt="Coverage"></a>
-</p>
 
 ## Fast, In-Process Event Dispatcher
 
 This package offers a high-performance, **in-process event dispatcher** for Go, ideal for decoupling modules and enabling asynchronous event handling. It supports both synchronous and asynchronous processing, focusing on speed and simplicity.
+
 - **High Performance:** Processes millions of events per second, about **4x to 10x faster** than channels.
 - **Generic:** Works with any type implementing the `Event` interface.
 - **Asynchronous:** Each subscriber runs in its own goroutine, ensuring non-blocking event handling.
 
 **Use When:**
+
 - ✅ Decoupling modules within a single Go process.
 - ✅ Implementing lightweight pub/sub or event-driven patterns.
 - ✅ Needing high-throughput, low-latency event dispatching.
 - ✅ Preferring a simple, dependency-free solution.
 
 **Not For:**
+
 - ❌ Inter-process/service communication (use Kafka, NATS, etc.).
 - ❌ Event persistence, durability, or advanced routing/filtering.
 - ❌ Cross-language/platform scenarios.
