@@ -6,7 +6,7 @@ package main
 import (
 	"time"
 
-	"github.com/kelindar/event"
+	"github.com/mostlygeek/event"
 )
 
 // Various event types

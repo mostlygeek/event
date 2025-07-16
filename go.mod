@@ -1,4 +1,4 @@
-module github.com/kelindar/event
+module github.com/mostlygeek/event
 
 go 1.20
 
