@@ -4,7 +4,7 @@ go 1.24.2
 
 require (
 	github.com/kelindar/bench v0.2.0
-	github.com/kelindar/event v0.0.0
+	github.com/kelindar/event v1.5.2
 )
 
 require (
@@ -12,4 +12,4 @@ require (
 	gonum.org/v1/gonum v0.8.2 // indirect
 )
 
-replace github.com/kelindar/event => ../
+replace github.com/mostlygeek/event => ../
