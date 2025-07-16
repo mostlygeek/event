@@ -4,7 +4,7 @@ go 1.24.2
 
 require (
 	github.com/kelindar/bench v0.2.0
-	github.com/kelindar/event v1.5.2
+	github.com/mostlygeek/event v0.0.0-00010101000000-000000000000
 )
 
 require (

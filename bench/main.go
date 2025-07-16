@@ -6,7 +6,7 @@ import (
 	"sync/atomic"
 
 	"github.com/kelindar/bench"
-	"github.com/kelindar/event"
+	"github.com/mostlygeek/event"
 )
 
 func main() {
