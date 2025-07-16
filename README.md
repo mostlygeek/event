@@ -1,28 +1,36 @@
-## About this Fork:
+# About
 
-This fork is slower than the parent but has 0% CPU usage while idle. Benchmark results are below show difference in operations/second. They were run on an M1 Macbook Pro w/ 32GB of RAM. For the main use case of this library [llama-swap](https://github.com/mostlygeek/llama-swap) the trade-off is worth it.
+This fork is slower than the parent but has 0% CPU usage while idle.
+
+The benchmark results below were run on an M1 Macbook Pro w/ 32GB of RAM.
+
+This is only maintained for [llama-swap](https://github.com/mostlygeek/llama-swap)'s requirements.
 
 ### kelindar/event
 
 | name   | time/op | ops/s | allocs/op | vs prev | vs ref    |
 | ------ | ------- | ----- | --------- | ------- | --------- |
-| 1x1    | 70.1 ns | 14.3M | 0         | new     | ✅ +76%   |
-| 1x10   | 60.2 ns | 16.6M | 0         | new     | ✅ +2.3x  |
-| 1x100  | 36.5 ns | 27.4M | 0         | new     | ✅ +6.3x  |
-| 10x1   | 80.3 ns | 12.4M | 0         | new     | ✅ +86%   |
-| 10x10  | 35.7 ns | 28.0M | 0         | new     | ✅ +7.3x  |
-| 10x100 | 24.7 ns | 40.5M | 0         | new     | ✅ +10.2x |
+| 1x1    | 70.1 ns | 14.3M | 0         | -       | ✅ +76%   |
+| 1x10   | 60.2 ns | 16.6M | 0         | -       | ✅ +2.3x  |
+| 1x100  | 36.5 ns | 27.4M | 0         | -       | ✅ +6.3x  |
+| 10x1   | 80.3 ns | 12.4M | 0         | -       | ✅ +86%   |
+| 10x10  | 35.7 ns | 28.0M | 0         | -       | ✅ +7.3x  |
+| 10x100 | 24.7 ns | 40.5M | 0         | -       | ✅ +10.2x |
 
 ### mostlygeek/event
 
-| name   | time/op  | ops/s | allocs/op | vs prev   | vs ref    |
-| ------ | -------- | ----- | --------- | --------- | --------- |
-| 1x1    | 79.5 ns  | 12.6M | 0         | ❌ -13%   | ✅ +53%   |
-| 1x10   | 66.2 ns  | 15.1M | 0         | 🟰 similar | ✅ +2.1x  |
-| 1x100  | 63.5 ns  | 15.7M | 0         | ❌ -50%   | ✅ +3.4x  |
-| 10x1   | 168.7 ns | 5.9M  | 0         | ❌ -54%   | ❌ -18%   |
-| 10x10  | 166.8 ns | 6.0M  | 0         | ❌ -71%   | 🟰 similar |
-| 10x100 | 55.6 ns  | 18.0M | 0         | ❌ -65%   | ✅ +3.6x  |
+| name   | time/op  | ops/s | allocs/op | vs kelindar/event | vs ref    |
+| ------ | -------- | ----- | --------- | ----------------- | --------- |
+| 1x1    | 79.5 ns  | 12.6M | 0         | ❌ -13%           | ✅ +53%   |
+| 1x10   | 66.2 ns  | 15.1M | 0         | 🟰 similar         | ✅ +2.1x  |
+| 1x100  | 63.5 ns  | 15.7M | 0         | ❌ -50%           | ✅ +3.4x  |
+| 10x1   | 168.7 ns | 5.9M  | 0         | ❌ -54%           | ❌ -18%   |
+| 10x10  | 166.8 ns | 6.0M  | 0         | ❌ -71%           | 🟰 similar |
+| 10x100 | 55.6 ns  | 18.0M | 0         | ❌ -65%           | ✅ +3.6x  |
+
+---
+
+---
 
 ---
 
